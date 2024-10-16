@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Current Time App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-500 to-indigo-600 h-screen flex items-center justify-center font-sans">
+    <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl p-8 shadow-lg text-center w-80">
+        <h1 class="text-3xl font-bold mb-4 text-white">Current Time</h1>
+        <div class="bg-white rounded-lg p-6 shadow-inner">
+            <p id="current-time" class="text-4xl font-mono text-indigo-900 font-bold"></p>
+        </div>
+        <p class="mt-4 text-sm text-white opacity-80">Refreshes every second</p>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('current-time').textContent = timeString;
+        }
+
+        // Update time immediately and then every second
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
